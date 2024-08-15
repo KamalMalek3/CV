@@ -718,3 +718,9 @@
     content: "\e9e6";
 }
 
+@media (max-width: 600px) {
+    .stats-list .bgrid {
+        width: 50%;
+        float: left;
+    }
+}
