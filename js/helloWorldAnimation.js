@@ -31,9 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (i < text.length) {
                     document.getElementById("typing-text").innerHTML += text.charAt(i);
                     i++;
-                    if (document.getElementById("typing-text").innerHTML.length < i) {
-                        document.getElementById("typing-text").innerHTML = text2;
-                    }
                 } else {
                     clearInterval(typingInterval);
                 }
@@ -50,5 +47,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Call the function to start the typing effect
+    
+    if (document.getElementById("typing-text").innerHTML.length > helloWorldExamples[0].length) {
+        clearTimeout;
+        document.getElementById("typing-text").innerHTML = text2;
+    }
    typeEffect();
 });
