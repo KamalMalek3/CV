@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (i < text.length) {
                     document.getElementById("typing-text").innerHTML += text.charAt(i);
                     i++;
+                    if (document.getElementById("typing-text").innerHTML.length < i) {
+                        document.getElementById("typing-text").innerHTML = text2;
+                    }
                 } else {
                     clearInterval(typingInterval);
                 }
