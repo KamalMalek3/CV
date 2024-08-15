@@ -14,15 +14,17 @@ const helloWorldExamples = [
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    var text = helloWorldExamples[Math.floor(Math.random() * helloWorldExamples.length)];
-    var text2 = "> Hello, World!";
-    var speed = 125; // Adjust the typing speed (in milliseconds)
-    var delay = 1250;
-    var appearIn = 500;
-    var delay2 = delay + text.length * speed * 1.1 + appearIn;
 
     // Function to simulate typing effect
     function typeEffect() {
+
+        var text = helloWorldExamples[Math.floor(Math.random() * helloWorldExamples.length)];
+        var text2 = "> Hello, World!";
+        var speed = 125; // Adjust the typing speed (in milliseconds)
+        var delay = 1250;
+        var appearIn = 500;
+        var delay2 = delay + text.length * speed * 1.1 + appearIn;
+
         var i = 0;
         setTimeout(function () {
             var typingInterval = setInterval(function () {
@@ -34,16 +36,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }, speed);
         }, delay); // Delay of 1 second before starting the typing effect
+
         document.getElementById("typing-text").innerHTML = "";
         setTimeout(function () {
             if (text === document.getElementById("typing-text").innerHTML) {
                 document.getElementById("typing-text").innerHTML = text2;
-            }else{
-                delay2 +=250;
             }
         }, delay2)
+        setTimeout(typeEffect, delay2 + delay + text2.length * speed * 1.1 + appearIn);
     }
 
     // Call the function to start the typing effect
-    typeEffect();
+   typeEffect();
 });
