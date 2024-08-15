@@ -1,5 +1,5 @@
 const helloWorldExamples = [
-    'std::cout << "Hello, World!" << std::endl;',  // C++
+    'cout<<"Hello, World!\\n"',  // C++
     'print("Hello, World!")',                     // Python
     'console.log("Hello, World!");',              // JavaScript
     'System.out.println("Hello, World!");',       // Java
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to simulate typing effect
     function typeEffect() {
-
         var text = helloWorldExamples[Math.floor(Math.random() * helloWorldExamples.length)];
         var text2 = "> Hello, World!";
         var speed = 125; // Adjust the typing speed (in milliseconds)
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Call the function to start the typing effect
     
-    if (document.getElementById("typing-text").innerHTML.length > helloWorldExamples[0].length) {
+    if (document.getElementById("typing-text").innerHTML.length > helloWorldExamples[3].length) {
         clearTimeout;
         document.getElementById("typing-text").innerHTML = text2;
     }
