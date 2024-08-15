@@ -36,7 +36,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }, delay); // Delay of 1 second before starting the typing effect
         document.getElementById("typing-text").innerHTML = "";
         setTimeout(function () {
-            document.getElementById("typing-text").innerHTML = text2;
+            if (text === document.getElementById("typing-text").innerHTML) {
+                document.getElementById("typing-text").innerHTML = text2;
+            }else{
+                delay2 +=250;
+            }
         }, delay2)
     }
 
