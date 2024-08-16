@@ -1,32 +1,39 @@
 const helloWorldExamples = [
-    'cout<<"Hello, World!\\n"',  // C++
-    'print("Hello, World!")',                     // Python
-    'console.log("Hello, World!");',              // JavaScript
-    'System.out.println("Hello, World!");',       // Java
-    'echo "Hello, World!";',                      // PHP
-    'printf("Hello, World!\\n");',                // C
-    'puts "Hello, World!"',                       // Ruby
-    'Console.WriteLine("Hello, World!");',        // C#
-    'fmt.Println("Hello, World!")',               // Go
-    'echo "Hello, World!"',                       // Bash
+    'cout<<"Hello, World!\\n";',  // C++
+    'print("Hello, World!")',     // Python
+    'console.log("Hello, World!");', // JavaScript
+    'System.out.println("Hello, World!");', // Java
+    'echo "Hello, World!";',      // PHP
+    'printf("Hello, World!\\n");', // C
+    'puts "Hello, World!"',       // Ruby
+    'Console.WriteLine("Hello, World!");', // C#
+    'fmt.Println("Hello, World!")', // Go
+    'echo "Hello, World!"',       // Bash
 ];
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
+    let typingInterval;
 
     // Function to simulate typing effect
     function typeEffect() {
-        var text = helloWorldExamples[Math.floor(Math.random() * helloWorldExamples.length)];
-        var text2 = "> Hello, World!";
-        var speed = 125; // Adjust the typing speed (in milliseconds)
-        var delay = 1250;
-        var appearIn = 500;
-        var delay2 = delay + text.length * speed * 1.1 + appearIn;
+        // Clear any existing interval to avoid overlap
+        if (typingInterval) {
+            clearInterval(typingInterval);
+        }
 
-        var i = 0;
+        const text = helloWorldExamples[Math.floor(Math.random() * helloWorldExamples.length)];
+        const text2 = "> Hello, World!";
+        const speed = 125; // Adjust the typing speed (in milliseconds)
+        const delay = 1250;
+        const appearIn = 500;
+        const delay2 = delay + text.length * speed * 1.1 + appearIn;
+
+        let i = 0;
+
+        document.getElementById("typing-text").innerHTML = ""; // Clear the text before starting
+
         setTimeout(function () {
-            var typingInterval = setInterval(function () {
+            typingInterval = setInterval(function () {
                 if (i < text.length) {
                     document.getElementById("typing-text").innerHTML += text.charAt(i);
                     i++;
@@ -34,22 +41,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     clearInterval(typingInterval);
                 }
             }, speed);
-        }, delay); // Delay of 1 second before starting the typing effect
+        }, delay); // Delay before starting the typing effect
 
-        document.getElementById("typing-text").innerHTML = "";
         setTimeout(function () {
             if (text === document.getElementById("typing-text").innerHTML) {
                 document.getElementById("typing-text").innerHTML = text2;
             }
-        }, delay2)
+        }, delay2);
+
+        // Start the next typing effect after the current one finishes
         setTimeout(typeEffect, delay2 + delay + text2.length * speed * 1.1 + appearIn);
     }
 
-    // Call the function to start the typing effect
-    
-    if (document.getElementById("typing-text").innerHTML.length > helloWorldExamples[3].length) {
-        clearTimeout;
-        document.getElementById("typing-text").innerHTML = text2;
-    }
-   typeEffect();
+    // Start the typing effect
+    typeEffect();
 });
